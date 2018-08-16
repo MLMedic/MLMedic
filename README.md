@@ -1,4 +1,4 @@
-# MedicML
+# MLMedic
 Latest machine learning innovations for Medical Imaging
 
 This is the project repository for the Brisbane health hack 2019. The goal is to develop an interface for applying mashine learning models to medical imaging data. 
