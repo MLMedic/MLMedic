@@ -1,5 +1,6 @@
 # MLMedic
 Putting great tools in the hand of clinicians.
+https://github.com/MLMedic/MLMedic
 
 This is the project repository for the Brisbane health hack 2019. The goal is to develop an interface for applying mashine learning models to medical imaging data.
 
@@ -33,20 +34,26 @@ This is the project repository for the Brisbane health hack 2019. The goal is to
 ## Example how a current applicaiton of a model looks like:
 https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
 
-- https://github.com/MLMedic/MLMedic
 - install miniconda https://conda.io/miniconda.html or anaconda
-- pip install dltk tensorflow
-- download Models:
- - http://www.doc.ic.ac.uk/~mrajchl/dltk_models/model_zoo/neuronet/spm_tissue.tar.gz
+ - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  - bash Miniconda3-latest-Linux-x86_64.sh
+- conda install tensorflow
+- pip install dltk
 - clone model repo:
-  - https://github.com/DLTK/models
+  - git clone https://github.com/DLTK/models
+- download Models:
+ - wget http://www.doc.ic.ac.uk/~mrajchl/dltk_models/model_zoo/neuronet/spm_tissue.tar.gz
+ - tar -xzf spm_tissue.tar.gz
+ - copy files from spm_tissue/0/1513180449 to spm_tissue/0
+ - adjust paths in config_spm_tissue.json
+ - add this to files.csv: id,t1,fsl_fast,fsl_first,spm_tissue,malp_em,malp_em_tissue
+5404127,3T.nii.gz,T1_brain_seg.nii.gz,all_fast_firstseg.nii.gz,T1_brain_seg_spm.nii.gz,T1_MALPEM.nii.gz,T1_MALPEM_tissues.nii.gz  
+  - download 3T file
 - run model
-  - python deploy.py -p path/to/saved/model -c CUDA_DEVICE --config MY_CONFIG
+  - python deploy.py --csv files.csv --config config_spm_tissue.json
 
 
-Can we replace this please with a nice GUI?
-
-## possible solutions - replacing all of the above steps with something like:
+## Can we replace this with a nice GUI that ideally doesnt need a python installation?
 - Electron
 - https://www.npmjs.com/package/dicom
 - https://www.npmjs.com/package/imageviewer
