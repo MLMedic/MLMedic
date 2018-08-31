@@ -43,13 +43,13 @@ https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
   - git clone https://github.com/DLTK/models
 - download Models:
  - wget http://www.doc.ic.ac.uk/~mrajchl/dltk_models/model_zoo/neuronet/spm_tissue.tar.gz
- - tar -xzf spm_tissue.tar.gz
- - copy files from spm_tissue/0/1513180449 to spm_tissue/0
- - adjust paths in /models/ukbb_neuronet_brain_segmentation/config_spm_tissue.json
- - create and add this to /models/ukbb_neuronet_brain_segmentation/files.csv: id,t1,fsl_fast,fsl_first,spm_tissue,malp_em,malp_em_tissue
+ - tar -xzf spm_tissue.tar.gz (into /models/ukbb_neuronet_brain_segmentation/
+ - copy files from spm_tissue/0/1513180449 up one level to spm_tissue/0
+ - adjust paths in /models/ukbb_neuronet_brain_segmentation/config_spm_tissue.json so they point to the path /models/ukbb_neuronet_brain_segmentation/spm_tissue or whatever  is relevant.
+ - create and add this to /models/ukbb_neuronet_brain_segmentation/files.csv in two lines: id,t1,fsl_fast,fsl_first,spm_tissue,malp_em,malp_em_tissue
 5404127,3T.nii.gz,T1_brain_seg.nii.gz,all_fast_firstseg.nii.gz,T1_brain_seg_spm.nii.gz,T1_MALPEM.nii.gz,T1_MALPEM_tissues.nii.gz  
-  - download 3T file from link provided on owncloud
-- run model
+  - download 3T file from link provided on owncloud and name it 3T.nii.gz, place it in /models/ukbb_neuronet_brain_segmentation/
+- run the model!
   - python deploy.py --csv files.csv --config config_spm_tissue.json
 
 
