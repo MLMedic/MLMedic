@@ -45,10 +45,10 @@ https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
  - wget http://www.doc.ic.ac.uk/~mrajchl/dltk_models/model_zoo/neuronet/spm_tissue.tar.gz
  - tar -xzf spm_tissue.tar.gz
  - copy files from spm_tissue/0/1513180449 to spm_tissue/0
- - adjust paths in config_spm_tissue.json
- - add this to files.csv: id,t1,fsl_fast,fsl_first,spm_tissue,malp_em,malp_em_tissue
+ - adjust paths in /models/ukbb_neuronet_brain_segmentation/config_spm_tissue.json
+ - create and add this to /models/ukbb_neuronet_brain_segmentation/files.csv: id,t1,fsl_fast,fsl_first,spm_tissue,malp_em,malp_em_tissue
 5404127,3T.nii.gz,T1_brain_seg.nii.gz,all_fast_firstseg.nii.gz,T1_brain_seg_spm.nii.gz,T1_MALPEM.nii.gz,T1_MALPEM_tissues.nii.gz  
-  - download 3T file
+  - download 3T file from link provided on owncloud
 - run model
   - python deploy.py --csv files.csv --config config_spm_tissue.json
 
