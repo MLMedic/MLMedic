@@ -52,7 +52,7 @@ https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
   - download 3T file from link provided on owncloud and name it 3T.nii.gz, place it in /models/ukbb_neuronet_brain_segmentation/
 - run the model!
   - python deploy.py --csv files.csv --config config_spm_tissue.json
-## Another example:
+## Another example that needs Torch (if someone knows how to convert this to tensorflow/TF.js!):
  From https://github.com/Entodi/MeshNet
  - First you need Torch! 
  - Steps taken from https://dwijaybane.wordpress.com/2017/07/22/installing-torch-7-deep-learning-on-ubuntu-16-04/
