@@ -23,9 +23,9 @@ This is the project repository for the Brisbane health hack 2019. The goal is to
 - link via email
 
 ## Available Models:
-- https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
-- https://github.com/josedolz/LiviaNET
-- https://github.com/Entodi/MeshNet 
+- https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation (Tensorflow)
+- https://github.com/josedolz/LiviaNET (Python 2 and Theano)
+- https://github.com/Entodi/MeshNet (Torch)
 - http://64.234.162.248:3000/about (Same as above)
 
 ## Availabe Tools (need to be trained first):
