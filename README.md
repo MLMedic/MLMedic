@@ -54,8 +54,8 @@ https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
   - python deploy.py --csv files.csv --config config_spm_tissue.json
 ## Another example:
  From https://github.com/Entodi/MeshNet
-  - First you need Torch! 
- Steps taken from https://dwijaybane.wordpress.com/2017/07/22/installing-torch-7-deep-learning-on-ubuntu-16-04/
+ - First you need Torch! 
+ - Steps taken from https://dwijaybane.wordpress.com/2017/07/22/installing-torch-7-deep-learning-on-ubuntu-16-04/
    - sudo apt-get install --no-install-recommends git software-properties-common
    - export TORCH_ROOT=~/torch
    - git clone https://github.com/torch/distro.git $TORCH_ROOT --recursive
