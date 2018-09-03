@@ -56,25 +56,25 @@ https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
  From https://github.com/Entodi/MeshNet
   - First you need Torch! 
  Steps taken from https://dwijaybane.wordpress.com/2017/07/22/installing-torch-7-deep-learning-on-ubuntu-16-04/
-  - sudo apt-get install --no-install-recommends git software-properties-common
-  - export TORCH_ROOT=~/torch
-  - git clone https://github.com/torch/distro.git $TORCH_ROOT --recursive
-  - cd $TORCH_ROOT
-  - ./install-deps
-  - ./install.sh -b
+   - sudo apt-get install --no-install-recommends git software-properties-common
+   - export TORCH_ROOT=~/torch
+   - git clone https://github.com/torch/distro.git $TORCH_ROOT --recursive
+   - cd $TORCH_ROOT
+   - ./install-deps
+   - ./install.sh -b
  - Now download the models for MeshNet AKA BrainChop
-  - git clone https://github.com/Entodi/MeshNet.git
+   - git clone https://github.com/Entodi/MeshNet.git
  - Download the 3T data from owncloud link
  - Install python and dependencies if you haven't:
-  - pip install nipy
+   - pip install nipy
  - Conform T1 to 1mm voxel size in coronal slice direction with side length 256.
-  - (Freesurfer required) mri_convert *brainDir*/t1.nii *brainDir*/t1_c.nii -c
+   - (Freesurfer required) mri_convert *brainDir*/t1.nii *brainDir*/t1_c.nii -c
  - Convert nifti to numpy format
-  - python nifti2npy.py *brainDir*/t1_c.nii --npy_file *brainDir*/T1.npy
+   - python nifti2npy.py *brainDir*/t1_c.nii --npy_file *brainDir*/T1.npy
  - Create segmentation using predict.lua providing path to directory with brain npy file brainDir
-  - th predict.lua -modelFile ./saved_models/model_Mon_Jul_10_16:43:55_2017/model_219.t7 -brainPath *brainDir*
+   - th predict.lua -modelFile ./saved_models/model_Mon_Jul_10_16:43:55_2017/model_219.t7 -brainPath *brainDir*
  - Convert numpy segmentation file to nifti format by providing base nifti file
-  - python npy2nifti.py segmentation.npy t1_c.nii
+   - python npy2nifti.py segmentation.npy t1_c.nii
  
 ## Can we replace this with a nice GUI that ideally doesnt need a python installation?
 - Electron
