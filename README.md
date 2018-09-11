@@ -53,7 +53,7 @@ https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
   - python deploy.py --csv files.csv --config config_spm_tissue.json
 
 
-## Can we replace this with a nice GUI that ideally doesnt need a python installation?
+## Can we replace this with a nice GUI that ideally doesn't need a python installation?
 - Electron
 - https://www.npmjs.com/package/dicom
 - https://www.npmjs.com/package/imageviewer
