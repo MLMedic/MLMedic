@@ -23,9 +23,11 @@ This is the project repository for the Brisbane health hack 2019. The goal is to
 - link via email
 
 ## Available Models:
-- https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
-- https://github.com/josedolz/LiviaNET
-- http://64.234.162.248:3000/about
+- https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation (Tensorflow)
+- https://github.com/zsdonghao/u-net-brain-tumor.git (TensorFlow)
+- https://github.com/josedolz/LiviaNET (Python 2 and Theano)
+- https://github.com/Entodi/MeshNet (Torch)
+- http://64.234.162.248:3000/about (Same as above)
 
 ## Availabe Tools (need to be trained first):
 - https://github.com/kaczmarj/nobrainer
@@ -43,18 +45,46 @@ https://github.com/DLTK/models/tree/master/ukbb_neuronet_brain_segmentation
   - git clone https://github.com/DLTK/models
 - download Models:
  - wget http://www.doc.ic.ac.uk/~mrajchl/dltk_models/model_zoo/neuronet/spm_tissue.tar.gz
- - tar -xzf spm_tissue.tar.gz
- - copy files from spm_tissue/0/1513180449 to spm_tissue/0
- - adjust paths in config_spm_tissue.json
- - add this to files.csv: id,t1,fsl_fast,fsl_first,spm_tissue,malp_em,malp_em_tissue
+ - tar -xzf spm_tissue.tar.gz (into /models/ukbb_neuronet_brain_segmentation/
+ - copy files from spm_tissue/0/1513180449 up one level to spm_tissue/0
+ - adjust paths in /models/ukbb_neuronet_brain_segmentation/config_spm_tissue.json so they point to the path /models/ukbb_neuronet_brain_segmentation/spm_tissue or whatever  is relevant.
+ - create and add this to /models/ukbb_neuronet_brain_segmentation/files.csv in two lines: id,t1,fsl_fast,fsl_first,spm_tissue,malp_em,malp_em_tissue
 5404127,3T.nii.gz,T1_brain_seg.nii.gz,all_fast_firstseg.nii.gz,T1_brain_seg_spm.nii.gz,T1_MALPEM.nii.gz,T1_MALPEM_tissues.nii.gz  
-  - download 3T file
-- run model
+  - download 3T file from link provided on owncloud and name it 3T.nii.gz, place it in /models/ukbb_neuronet_brain_segmentation/
+- run the model!
   - python deploy.py --csv files.csv --config config_spm_tissue.json
 
 
-## Can we replace this with a nice GUI that ideally doesn't need a python installation?
+## Another example that needs Torch (if someone knows how to convert this to tensorflow/TF.js!):
+ From https://github.com/Entodi/MeshNet
+ - First you need Torch!
+ - Steps taken from https://dwijaybane.wordpress.com/2017/07/22/installing-torch-7-deep-learning-on-ubuntu-16-04/
+   - sudo apt-get install --no-install-recommends git software-properties-common
+   - export TORCH_ROOT=~/torch
+   - git clone https://github.com/torch/distro.git $TORCH_ROOT --recursive
+   - cd $TORCH_ROOT
+   - ./install-deps
+   - ./install.sh -b
+ - Now download the models for MeshNet AKA BrainChop
+   - git clone https://github.com/Entodi/MeshNet.git
+ - Download the 3T data from owncloud link
+ - Install python and dependencies if you haven't:
+   - pip install nipy
+ - Conform T1 to 1mm voxel size in coronal slice direction with side length 256.
+   - (Freesurfer required) mri_convert *brainDir*/t1.nii *brainDir*/t1_c.nii -c
+ - Convert nifti to numpy format
+   - python nifti2npy.py *brainDir*/t1_c.nii --npy_file *brainDir*/T1.npy
+ - Create segmentation using predict.lua providing path to directory with brain npy file brainDir
+   - th predict.lua -modelFile ./saved_models/model_Mon_Jul_10_16:43:55_2017/model_219.t7 -brainPath *brainDir*
+ - Convert numpy segmentation file to nifti format by providing base nifti file
+   - python npy2nifti.py segmentation.npy t1_c.nii
+
+## Can we replace this with a nice GUI that ideally doesnt need a python installation?
 - Electron
 - https://www.npmjs.com/package/dicom
 - https://www.npmjs.com/package/imageviewer
 - TF.js (https://js.tensorflow.org/)
+- https://github.com/bioimagesuiteweb/bisweb
+
+## Data to play with
+https://cloudstor.aarnet.edu.au/plus/s/JGt804o3cGXc5xf
