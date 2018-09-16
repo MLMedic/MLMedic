@@ -4,3 +4,17 @@ data
 
 
 
+*.nii.gz
+*.nii
+*.tar.gz
+!test.nii.gz
+!test.nii
+!test.tar.gz
+
+
+trained_models/*
+!trained_models/test
+
+-p
+.ipynb_checkpoints
+__pycache__
