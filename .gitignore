@@ -12,9 +12,7 @@ data
 !test.tar.gz
 
 
-trained_models/*
-!trained_models/test
 
--p
-.ipynb_checkpoints
-__pycache__
+*/-p
+*/.ipynb_checkpoints
+*/__pycache__
